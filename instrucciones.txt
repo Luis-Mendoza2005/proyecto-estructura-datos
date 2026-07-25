@@ -17,3 +17,157 @@ BinarySearchTree.search()
         |
         ↓
  mostrar libro
+
+
+ GRAFO:
+ -----------------------------------
+
+📚 Catálogo
+
+[Harry Potter]
+
+[El Hobbit]
+
+[Clean Code]
+
+[Percy Jackson]
+
+-----------------------------------
+El usuario hace clic en:
+
+Harry Potter
+↓
+
+Va a:
+
+detalle-libro.html?codigo=1005
+--------------------------------------------------
+
+           Harry Potter
+
+        [Imagen del libro]
+
+Autor:
+J. K. Rowling
+
+Categoría:
+Fantasía
+
+Descripción:
+...
+
+--------------------------------------------
+
+📖 Libros recomendados
+
+[ Percy Jackson ] [ El Hobbit ] [ Narnia ]
+
+--------------------------------------------------
+Y si el usuario toca:
+
+Percy Jackson
+
+↓
+
+Va a:
+
+detalle-libro.html?codigo=1006
+Cada recomendación será una arista.
+
+Visualmente:
+
+          Harry Potter
+           /         \
+          /           \
+ Percy Jackson ---- El Hobbit
+          \
+           \
+          Narnia
+
+Resumen General:
+    Lista enlazada
+
+                       │
+
+                       ▼
+
+                 Catálogo principal
+
+                       │
+
+             click sobre libro
+
+                       ▼
+
+               detalle-libro.html
+
+                       │
+
+             Busca libro (Árbol)
+
+                       │
+
+              Obtiene información
+
+                       │
+
+                       ▼
+
+                 Consulta Grafo
+
+                       │
+
+              Obtiene vecinos
+
+                       │
+
+                       ▼
+
+         Mostrar recomendaciones
+
+El Grafo que se va utilizar es de tipo no dirigido, ya que si un 
+libro señala/recomienda a otro, entonces ese también lo recomienda a el.
+
+Usuario abre:
+
+Harry Potter
+
+        │
+
+        ▼
+
+Árbol
+
+↓
+
+Libro completo
+
+↓
+
+Código = 1001
+
+↓
+
+Grafo
+
+↓
+
+1002
+1005
+1008
+
+↓
+
+Árbol
+
+↓
+
+Busca cada código
+
+↓
+
+Obtiene los libros completos
+
+↓
+
+Mostrar tarjetas
