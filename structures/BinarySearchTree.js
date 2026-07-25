@@ -53,6 +53,23 @@ class BinarySearchTree{
         }
         return this.searchNode(currentNode.right, codigo);
     }
+
+    inOrder(){
+        const libros = [];
+        this.inOrderTraversal(this.root, libros);
+        return libros;
+    }
+    inOrderTraversal(currentNode, libros){
+        if(currentNode === null){
+            return;
+        }
+        this.inOrderTraversal(currentNode.left, libros);
+
+        libros.push(currentNode.libro);
+
+        this.inOrderTraversal(currentNode.right, libros);
+        
+    }
 }
 
 export default BinarySearchTree;

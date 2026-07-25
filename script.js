@@ -7,6 +7,3 @@ librosPrueba.forEach(libro => {
     arbol.insert(libro);
 })
 
-const libroEncontrado = arbol.search(1008)
-console.log(libroEncontrado)
-console.log(arbol.search(9999));
