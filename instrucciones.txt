@@ -1,3 +1,19 @@
 El arbol almacena los nodos los cuales representan a un objeto libro,
 un todo debe tener su libro el de la izquierda y el de la derecha.
 Los atributos de un libro van a ser: codigo, titulo, autor, categoria y estado
+librosPrueba.js
+        |
+        ↓
+    arbol.js
+        |
+        ↓
+BinarySearchTree.insert()
+        |
+        ↓
+      Árbol
+        |
+        ↓
+BinarySearchTree.search()
+        |
+        ↓
+ mostrar libro
