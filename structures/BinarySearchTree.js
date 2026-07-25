@@ -70,6 +70,44 @@ class BinarySearchTree{
         this.inOrderTraversal(currentNode.right, libros);
         
     }
+    preOrder() {
+        const libros = [];
+        this.preOrderTraversal(this.root, libros);
+        return libros;
+        }
+        preOrderTraversal(currentNode, libros) {
+
+        if (currentNode === null) {
+            return;
+        }
+
+        libros.push(currentNode.libro);
+
+        this.preOrderTraversal(currentNode.left, libros);
+
+        this.preOrderTraversal(currentNode.right, libros);
+
+    }
+
+    postOrder() {
+        const libros = [];
+        this.postOrderTraversal(this.root, libros);
+        return libros;
+    }
+
+    postOrderTraversal(currentNode, libros) {
+
+        if (currentNode === null) {
+            return;
+        }
+
+        this.postOrderTraversal(currentNode.left, libros);
+
+        this.postOrderTraversal(currentNode.right, libros);
+
+        libros.push(currentNode.libro);
+
+    }
 }
 
 export default BinarySearchTree;
