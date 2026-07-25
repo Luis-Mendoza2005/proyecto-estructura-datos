@@ -1,4 +1,4 @@
-import Node from "./nodo.js";
+import Nodo from "./nodo.js";
 class BinarySearchTree{
     constructor(){
         this.root = null
@@ -32,6 +32,26 @@ class BinarySearchTree{
                  */
             }
         }
+    }
+
+    search(codigo){
+        if(this.root === null){
+            return null;
+        }
+        return this.searchNode(this.root, codigo);
+    }
+
+    searchNode(currentNode, codigo) {
+        if (currentNode === null) {
+            return null;
+        }
+        if (codigo === currentNode.libro.codigo) {
+            return currentNode.libro;
+        }
+        if (codigo < currentNode.libro.codigo) {
+            return this.searchNode(currentNode.left, codigo);
+        }
+        return this.searchNode(currentNode.right, codigo);
     }
 }
 

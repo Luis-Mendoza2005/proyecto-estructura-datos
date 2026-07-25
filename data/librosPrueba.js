@@ -1,4 +1,4 @@
-import Libro from "../models/libro";
+import Libro from "../models/libro.js";
 const librosPrueba = [
     new Libro(
         1005,
