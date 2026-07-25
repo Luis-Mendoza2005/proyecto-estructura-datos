@@ -22,6 +22,7 @@ class BinarySearchTree{
             }else{
                 this.insertNode(curretNodo.left, newNodo);
             }
+<<<<<<< HEAD
         }else{
             if(curretNodo.right === null){
                 curretNodo.right = newNodo;
@@ -31,6 +32,8 @@ class BinarySearchTree{
                 como recursividad, es donde el método se llama a si mismo
                  */
             }
+=======
+>>>>>>> 1d18d12ce0ffadc723404e7ddf6a6bbaf9edae68
         }
     }
 }
