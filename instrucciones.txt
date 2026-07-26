@@ -171,3 +171,56 @@ Obtiene los libros completos
 ↓
 
 Mostrar tarjetas
+
+
+Como conectar el catalogo principal con el código:
+Usuario hace clic en un libro
+
+        │
+
+        ▼
+
+libro.codigo
+
+        │
+
+        ▼
+
+window.location.href =
+detalle-libro.html?codigo=1005
+
+        │
+
+        ▼
+
+detalle-libro.html
+
+        │
+
+        ▼
+
+obtenerCodigoURL()
+
+        │
+
+        ▼
+
+1005
+
+        │
+
+        ▼
+
+Árbol.search(1005)
+
+        │
+
+        ▼
+
+Libro encontrado
+
+        │
+
+        ▼
+
+Mostrar información

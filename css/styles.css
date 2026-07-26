@@ -185,3 +185,9 @@ input:focus {
     color: #555;
 
 }
+
+#imgDetail{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

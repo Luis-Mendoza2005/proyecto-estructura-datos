@@ -1,4 +1,5 @@
 import arbol from "./arbol.js";
+import grafo from "./grafo.js";
 
 //Inicio de seccin del arbol binario
 //===========================================================
@@ -99,5 +100,33 @@ const detalleLibro = document.getElementById("detalleLibro");
 if(detalleLibro){
     const codigo = obtenerCodigoURL();
     const libro = arbol.search(codigo);
-    console.log(libro);
+    mostrarDatalleLibro(libro);
+}
+
+function mostrarDatalleLibro(libro){
+    const detalleLibro = document.getElementById("detalleLibro");
+    if(libro === null){
+        detalleLibro.innerHTML = `
+            <h2>Libro no encontrado</h2>
+
+            <p>
+                No existe un libro con esé código
+            </p>
+        `;
+        return;
+    }
+
+    detalleLibro.innerHTML = `
+        <div id="imgDetail">
+            <img  src="${libro.imagen}" alt="${libro.titulo}">
+        </div>
+        <h1>${libro.titulo}</h1>
+        <p><strong>Código:</strong> ${libro.codigo}</p>
+        <p><strong>Autor:</strong> ${libro.autor}</p>
+        <p><strong>Categoría:</strong> ${libro.categoria}</p>
+        <p><strong>Estado:</strong> ${libro.estado}</p>
+        <p><strong>Descripción:</strong></p>
+        <p>${libro.descripcion}</p>
+
+    `;
 }
