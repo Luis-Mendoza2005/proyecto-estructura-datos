@@ -1,5 +1,5 @@
 //Archivo para poblar el grafo
-import Grafo from "../structures/grafo";
+import Grafo from "../structures/grafo.js";
 
 const grafo = new Grafo()
 

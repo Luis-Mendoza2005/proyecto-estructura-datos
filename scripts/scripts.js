@@ -140,13 +140,19 @@ function mostrarRecomendados(libro){
     for (const codigo of codigosRecomendados){
         const recomendado = arbol.search(codigo);
         if(recomendado){
-            contenedor.innerHTML += `
+            const tarjeta = document.createElement("div");
+            tarjeta.classList.add("recomendacion")
+            tarjeta.innerHTML += `
                 <div class="recomendacion">
                     <img src="${recomendado.imagen}" alt="${recomendado.titulo}">
                     <h3>${recomendado.titulo}</h3>
                     <p>${recomendado.autor}</p>
                 </div>
             `;
+            tarjeta.addEventListener("click", () =>{
+                window.location.href = `detalle-libro.html?codigo=${recomendado.codigo}`;
+            });
+            contenedor.appendChild(tarjeta)
         }
     }
 

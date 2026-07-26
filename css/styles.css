@@ -191,3 +191,13 @@ input:focus {
     align-items: center;
     justify-content: center;
 }
+
+/*CSS para las tarjetas de comendaciones*/
+.recomendacion {
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.recomendacion:hover {
+    transform: scale(1.05);
+}
