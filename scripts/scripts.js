@@ -58,8 +58,20 @@ function mostrarResultado(libro){
         <p><strong>Categoría:</strong> ${libro.categoria}</p>
 
         <p><strong>Estado:</strong> ${libro.estado}</p>
+        <p>
+            <button id="btnDetalleLibro">Ver Detalles</button>
+        </p>
 
     `;
+
+    const btnDetalleLibro = document.getElementById("btnDetalleLibro");
+
+    btnDetalleLibro.addEventListener("click", () => {
+
+        window.location.href =
+        `detalle-libro.html?codigo=${libro.codigo}`;
+
+    });
 
 }
 
@@ -118,17 +130,31 @@ function mostrarDatalleLibro(libro){
     }
 
     detalleLibro.innerHTML = `
-        <div id="imgDetail">
-            <img  src="${libro.imagen}" alt="${libro.titulo}">
-        </div>
-        <h1>${libro.titulo}</h1>
-        <p><strong>Código:</strong> ${libro.codigo}</p>
-        <p><strong>Autor:</strong> ${libro.autor}</p>
-        <p><strong>Categoría:</strong> ${libro.categoria}</p>
-        <p><strong>Estado:</strong> ${libro.estado}</p>
-        <p><strong>Descripción:</strong></p>
-        <p>${libro.descripcion}</p>
+        <div id="contenidoDetalle">
 
+            <div id="imgDetail">
+                <img src="${libro.imagen}" alt="${libro.titulo}">
+            </div>
+
+            <div id="infoDetalle">
+
+                <h1>${libro.titulo}</h1>
+
+                <p><strong>Código:</strong> ${libro.codigo}</p>
+
+                <p><strong>Autor:</strong> ${libro.autor}</p>
+
+                <p><strong>Categoría:</strong> ${libro.categoria}</p>
+
+                <p><strong>Estado:</strong> ${libro.estado}</p>
+
+                <p><strong>Descripción:</strong></p>
+
+                <p>${libro.descripcion}</p>
+
+            </div>
+
+        </div>
     `;
 }
 
