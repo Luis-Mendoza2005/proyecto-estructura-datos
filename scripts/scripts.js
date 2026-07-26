@@ -4,23 +4,24 @@ import arbol from "./arbol.js";
 //===========================================================
 const botonBuscar = document.getElementById("btnBuscar");
 
+if (botonBuscar){
+    botonBuscar.addEventListener('click', () => {
 
-botonBuscar.addEventListener('click', () => {
-
-    const codigo = Number(
-        document.getElementById("codigoLibro").value
-    );
-
-
-    const libro = arbol.search(codigo);
+        const codigo = Number(
+            document.getElementById("codigoLibro").value
+        );
 
 
-    mostrarResultado(libro);
+        const libro = arbol.search(codigo);
 
 
-    document.getElementById("codigoLibro").value = "";
+        mostrarResultado(libro);
 
-});
+
+        document.getElementById("codigoLibro").value = "";
+
+    });
+}
 
 
 
@@ -85,3 +86,18 @@ if(inputCodigo){
 
 //==========================================================
 //Fin de sección de árbol binario
+
+//Inicio de Grafo
+//==========================================================
+
+function obtenerCodigoURL(){
+    const parametros = new URLSearchParams(window.location.search);
+    return Number(parametros.get("codigo"));
+}
+
+const detalleLibro = document.getElementById("detalleLibro");
+if(detalleLibro){
+    const codigo = obtenerCodigoURL();
+    const libro = arbol.search(codigo);
+    console.log(libro);
+}
