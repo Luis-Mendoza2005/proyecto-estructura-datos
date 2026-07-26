@@ -101,6 +101,7 @@ if(detalleLibro){
     const codigo = obtenerCodigoURL();
     const libro = arbol.search(codigo);
     mostrarDatalleLibro(libro);
+    mostrarRecomendados(libro);
 }
 
 function mostrarDatalleLibro(libro){
@@ -129,4 +130,24 @@ function mostrarDatalleLibro(libro){
         <p>${libro.descripcion}</p>
 
     `;
+}
+
+function mostrarRecomendados(libro){
+    const contenedor = document.getElementById("recomendados");
+    contenedor.innerHTML = "";
+    const codigosRecomendados = grafo.getRecomendaciones(libro.codigo);
+
+    for (const codigo of codigosRecomendados){
+        const recomendado = arbol.search(codigo);
+        if(recomendado){
+            contenedor.innerHTML += `
+                <div class="recomendacion">
+                    <img src="${recomendado.imagen}" alt="${recomendado.titulo}">
+                    <h3>${recomendado.titulo}</h3>
+                    <p>${recomendado.autor}</p>
+                </div>
+            `;
+        }
+    }
+
 }
