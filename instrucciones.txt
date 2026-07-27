@@ -224,3 +224,9 @@ Libro encontrado
         ▼
 
 Mostrar información
+
+
+Algoritmo de Ordenamiento:
+Se va a utilizar el algoritmo de insertion sort.
+Este va a servir para que en el catálogo principal de la página de inicio
+se pueda utilizar para ordenar los libros por titulo.
