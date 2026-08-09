@@ -41,4 +41,23 @@ class ListaEnlazadaDoble {
         
     
     }
+
+    estaVacia(){
+        return this.cabeza == null
+    }
+
+    //Recorre la lista y la devuelve como un arreglo normal,
+    //util para cuando se necesita recorrer los libros sin
+    //trabajar directamente con los nodos.
+    obtenerArray(){
+        const valores = []
+        let nodo_actual = this.cabeza
+        while (nodo_actual != null){
+            valores.push(nodo_actual.valor)
+            nodo_actual = nodo_actual.siguiente
+        }
+        return valores
+    }
 }
+
+export default ListaEnlazadaDoble;

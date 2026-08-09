@@ -401,3 +401,347 @@ h2 {
     font-size: 15px;
 
 }
+
+
+/*==========================================================
+=            ESTADOS (DISPONIBLE / PRESTADO)
+==========================================================*/
+
+.estado {
+
+    display: inline-block;
+
+    padding: 4px 12px;
+
+    border-radius: 20px;
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+    color: white;
+
+    margin-top: 8px;
+
+}
+
+.estado.disponible {
+
+    background: #2ecc71;
+
+}
+
+.estado.prestado {
+
+    background: #e74c3c;
+
+}
+
+
+/*==========================================================
+=            CATÁLOGO / CARRUSEL (LISTA ENLAZADA)
+==========================================================*/
+
+#catalogoSection {
+
+    width: 90%;
+
+    max-width: 1100px;
+
+    margin-top: 10px;
+
+    text-align: center;
+
+}
+
+#contenedorCarrusel {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    margin-top: 20px;
+
+}
+
+#carrusel {
+
+    display: flex;
+
+    gap: 20px;
+
+    overflow: hidden;
+
+    padding: 10px 0;
+
+    flex: 1;
+
+    justify-content: center;
+
+}
+
+.btnCarrusel {
+
+    flex-shrink: 0;
+
+    width: 50px;
+
+    height: 50px;
+
+    padding: 0;
+
+    border-radius: 50%;
+
+    font-size: 26px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+}
+
+.tarjeta-libro {
+
+    width: 180px;
+
+    flex: 0 0 auto;
+
+    background: white;
+
+    padding: 15px;
+
+    border-radius: 15px;
+
+    box-shadow: 0 4px 12px rgba(0,0,0,.15);
+
+    text-align: center;
+
+    cursor: pointer;
+
+    transition: transform .25s, box-shadow .25s;
+
+}
+
+.tarjeta-libro:hover {
+
+    transform: translateY(-8px);
+
+    box-shadow: 0 10px 25px rgba(0,0,0,.25);
+
+}
+
+.tarjeta-libro img {
+
+    width: 120px;
+
+    height: 180px;
+
+    object-fit: cover;
+
+    border-radius: 8px;
+
+}
+
+.tarjeta-libro h3 {
+
+    color: #2c3e50;
+
+    margin: 12px 0 4px;
+
+    font-size: 16px;
+
+}
+
+.tarjeta-libro p {
+
+    color: #666;
+
+    font-size: 14px;
+
+    margin: 0;
+
+}
+
+
+/*==========================================================
+=            SISTEMA DE PRÉSTAMOS (COLA + PILA)
+==========================================================*/
+
+#usuarioSection {
+
+    margin-top: 30px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+}
+
+#prestamosSection,
+#colaSection,
+#historialSection {
+
+    width: 90%;
+
+    max-width: 900px;
+
+    margin-top: 20px;
+
+}
+
+#listaLibrosPrestamo {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 15px;
+
+}
+
+.tarjetaPrestamo {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 20px;
+
+    background: white;
+
+    padding: 15px 20px;
+
+    border-radius: 15px;
+
+    box-shadow: 0 4px 12px rgba(0,0,0,.12);
+
+}
+
+.tarjetaPrestamo img {
+
+    width: 60px;
+
+    height: 90px;
+
+    object-fit: cover;
+
+    border-radius: 8px;
+
+    flex-shrink: 0;
+
+}
+
+.infoPrestamo {
+
+    flex: 1;
+
+}
+
+.infoPrestamo h3 {
+
+    margin: 0 0 4px;
+
+    color: #2c3e50;
+
+}
+
+.infoPrestamo p {
+
+    margin: 0;
+
+    color: #666;
+
+    font-size: 14px;
+
+}
+
+.accionesPrestamo {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 8px;
+
+    justify-content: flex-end;
+
+}
+
+.accionesPrestamo button {
+
+    padding: 8px 14px;
+
+    font-size: 14px;
+
+    margin: 0;
+
+}
+
+#colaSection,
+#historialSection {
+
+    background: white;
+
+    padding: 20px 25px;
+
+    border-radius: 15px;
+
+    box-shadow: 0 4px 12px rgba(0,0,0,.12);
+
+}
+
+#colaEspera,
+#historialLista {
+
+    padding-left: 20px;
+
+    color: #555;
+
+}
+
+#colaEspera li,
+#historialLista li {
+
+    margin: 6px 0;
+
+}
+
+#historialHeader {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+}
+
+#historialHeader h2 {
+
+    margin: 0;
+
+}
+
+#btnDeshacer {
+
+    background: #e67e22;
+
+}
+
+#btnDeshacer:hover {
+
+    background: #ca6510;
+
+}

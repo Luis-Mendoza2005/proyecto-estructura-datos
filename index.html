@@ -14,14 +14,35 @@
         Sistema de Biblioteca
     </h1>
 
+    <div id="botonesInicio">
 
-    <button onclick="window.location.href='ventanas/buscar-arbol.html'">
-        Buscar libros por medio de código
-    </button>
+        <button onclick="window.location.href='ventanas/buscar-arbol.html'">
+            Buscar libros por medio de código
+        </button>
 
-    <button>
-        Ver Catalogo de libros
-    </button>
+        <button onclick="window.location.href='ventanas/prestamos.html'">
+            Sistema de Préstamos
+        </button>
+
+    </div>
+
+    <section id="catalogoSection">
+
+        <h2>Catálogo de libros</h2>
+
+        <div id="contenedorCarrusel">
+
+            <button id="btnAnterior" class="btnCarrusel">‹</button>
+
+            <div id="carrusel"></div>
+
+            <button id="btnSiguiente" class="btnCarrusel">›</button>
+
+        </div>
+
+    </section>
+
+    <script type="module" src="./scripts/catalogo.js"></script>
 
 </body>
 

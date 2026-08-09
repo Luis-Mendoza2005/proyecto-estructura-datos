@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Sistema de Préstamos
+    </title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+
+<body>
+
+    <header id="headerBC">
+        <h1>Sistema de Préstamos</h1>
+        <button id="btnVolver">Volver al inicio</button>
+    </header>
+
+    <section id="usuarioSection">
+        <label for="nombreUsuario">Tu nombre:</label>
+        <input type="text" id="nombreUsuario" placeholder="Ej: Ana Torres">
+    </section>
+
+    <section id="prestamosSection">
+        <h2>Libros</h2>
+        <div id="listaLibrosPrestamo"></div>
+    </section>
+
+    <section id="colaSection">
+        <h2>Fila de espera (Cola)</h2>
+        <p id="colaTitulo">Selecciona "Ver fila" en un libro para ver quién espera por él.</p>
+        <ol id="colaEspera"></ol>
+    </section>
+
+    <section id="historialSection">
+
+        <div id="historialHeader">
+            <h2>Historial de movimientos (Pila)</h2>
+            <button id="btnDeshacer">Deshacer última acción</button>
+        </div>
+
+        <ul id="historialLista"></ul>
+
+    </section>
+
+    <script type="module" src="../scripts/prestamos.js"></script>
+
+</body>
+
+</html>

@@ -19,3 +19,5 @@ class Pila{
         return [...this.#items]
     }
 }
+
+export default Pila;
