@@ -18,6 +18,7 @@ let nodoInicio = listaLibros.cabeza;
 const carrusel = document.getElementById("carrusel");
 const btnAnterior = document.getElementById("btnAnterior");
 const btnSiguiente = document.getElementById("btnSiguiente");
+const ordenCatalogo = document.getElementById("ordenCatalogo");
 
 if (carrusel){
 
@@ -78,6 +79,18 @@ function crearTarjetaLibro(libro){
 
 //Copia de los libros necesari para poder cambiar el orden
 let librosOriginales = listaLibros.obtenerArray();
+
+//Implementacion del llamado de la función para ordenar cátalogo
+//al momento de que cambie el valor de el selector del html
+//y este mismo se lo pasa a la función
+//El if es por seguridad para que no se produzca un error, 
+//ya que este se puede aplicar en otra pagina.
+if (ordenCatalogo){
+    ordenCatalogo.addEventListener("change", ()=>{
+    ordenarCatalogo(ordenCatalogo.value)
+})
+}
+
 function ordenarCatalogo(orden){
     if(orden ==="az"){
         //Aqui se consiguen los libros para usarlos en el insertion sort
