@@ -1,6 +1,6 @@
 import ListaEnlazadaDoble from "../structures/listas-enlazadas.js";
 import librosPrueba from "../data/librosPrueba.js";
-
+import insertionSort from "./insertion-sort.js";
 //El catálogo principal se guarda en una lista doblemente enlazada.
 //Cada libro es un nodo con puntero "siguiente" y "anterior", y esos
 //mismos punteros son los que se usan para mover el carrusel, en vez
@@ -8,6 +8,7 @@ import librosPrueba from "../data/librosPrueba.js";
 const listaLibros = new ListaEnlazadaDoble();
 librosPrueba.forEach(libro => listaLibros.agregar(libro));
 
+ 
 //Cuántas tarjetas se muestran al mismo tiempo en el carrusel.
 const TARJETAS_VISIBLES = 4;
 
@@ -73,6 +74,22 @@ function crearTarjetaLibro(libro){
     });
 
     return tarjeta;
+}
+
+//Copia de los libros necesari para poder cambiar el orden
+let librosOriginales = listaLibros.obtenerArray();
+function ordenarCatalogo(orden){
+    if(orden ==="az"){
+        //Aqui se consiguen los libros para usarlos en el insertion sort
+        const librosOrdenados = insertionSort(listaLibros.obtenerArray())
+        listaLibros.actualizarValores(librosOrdenados);
+        renderCarrusel();
+    }
+    if(orden === "original"){
+        listaLibros.actualizarValores(librosOriginales);
+        renderCarrusel();
+    }
+
 }
 
 export default listaLibros;

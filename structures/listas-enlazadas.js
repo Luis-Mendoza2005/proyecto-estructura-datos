@@ -58,6 +58,19 @@ class ListaEnlazadaDoble {
         }
         return valores
     }
+    //Función que se conecta con el insertion sort con el fin
+    //de no tener que restructural el nodo anterior y el nodo siguiente
+    //para cambiar el orden, solamente se le cambian los valores
+    //a los nodos actuales
+    actualizarValores(valores){
+        let nodoActual = this.cabeza;
+        let i = 0
+        while(nodoActual != null && i < valores.length){
+            nodoActual.valor = valores[i]
+            nodoActual = nodoActual.siguiente;
+            i++;
+        }
+    }
 }
 
 export default ListaEnlazadaDoble;

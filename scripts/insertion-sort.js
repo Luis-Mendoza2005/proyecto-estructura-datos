@@ -7,7 +7,7 @@ function insertionSort(libros){
         //Ya que el insertion sort siempre compara con el que tienes a la
         //izquierda
         let j = i -1;
-        while (i>=0 && libros[j].titulo.toLowerCase() > libroActual.titulo.toLowerCase()){
+        while (j>=0 && libros[j].titulo.toLowerCase() > libroActual.titulo.toLowerCase()){
             libros[j+1] = libros[j];
             j--;
 
