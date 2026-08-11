@@ -1,10 +1,70 @@
 /*==========================================================
+=            TOKENS DE DISEÑO
+==========================================================
+Paleta inspirada en una sala de lectura de biblioteca:
+verde pino (estanterías, lámparas), latón envejecido
+(herrajes, sellos) y papel/pergamino de fondo.
+==========================================================*/
+
+:root {
+
+    /* Color */
+    --pine: #1F3A34;
+    --pine-dark: #142720;
+    --pine-light: #2E5147;
+
+    --paper: #F2EEE1;
+    --paper-alt: #E9E1C8;
+    --card: #FBFAF4;
+
+    --ink: #262420;
+    --ink-soft: #5B564C;
+
+    --gold: #B08D57;
+    --gold-dark: #8C6D3E;
+
+    --wine: #7B2632;
+    --wine-dark: #5E1D26;
+
+    --sage: #4F7A5B;
+    --sage-dark: #3A5D44;
+
+    --border: #DCD2B4;
+
+    /* Tipografía */
+    --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+    --font-body: "Work Sans", Arial, Helvetica, sans-serif;
+    --font-mono: "IBM Plex Mono", "Courier New", monospace;
+
+    /* Geometría */
+    --radius-lg: 14px;
+    --radius-md: 10px;
+    --radius-sm: 7px;
+
+    /* Sombras (con tinte cálido en vez de negro puro) */
+    --shadow-sm: 0 2px 8px rgba(38, 36, 32, .09);
+    --shadow-md: 0 10px 24px rgba(38, 36, 32, .12);
+    --shadow-lg: 0 18px 40px rgba(20, 39, 32, .18);
+}
+
+
+/*==========================================================
 =            CONFIGURACIÓN GENERAL
 ==========================================================*/
 
 * {
     box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: var(--font-body);
+}
+
+::selection {
+    background: var(--gold);
+    color: var(--pine-dark);
+}
+
+:focus-visible {
+    outline: 2px solid var(--gold-dark);
+    outline-offset: 2px;
 }
 
 
@@ -17,7 +77,46 @@ body {
     margin: 0;
     min-height: 100vh;
 
-    background: #f0f4f8;
+    color: var(--ink);
+    background-color: var(--paper);
+    /* Textura muy sutil de trama de papel/tela */
+    background-image:
+        repeating-linear-gradient(135deg, rgba(31, 58, 52, .025) 0px, rgba(31, 58, 52, .025) 1px, transparent 1px, transparent 7px);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    line-height: 1.6;
+
+}
+
+h1, h2, h3 {
+    font-family: var(--font-display);
+    color: var(--pine);
+}
+
+
+/*==========================================================
+=            HERO (PORTADA / INDEX)
+==========================================================*/
+
+.hero {
+
+    width: 100%;
+
+    background:
+        linear-gradient(180deg, var(--pine) 0%, var(--pine-dark) 100%);
+
+    color: var(--paper);
+
+    text-align: center;
+
+    padding: 56px 24px 44px;
+
+    margin: 0 0 40px 0;
+
+    border-bottom: 3px solid var(--gold);
 
     display: flex;
     flex-direction: column;
@@ -25,45 +124,62 @@ body {
 
 }
 
+.hero .eyebrow {
 
-/*==========================================================
-=            HEADER
-==========================================================*/
+    margin: 0 0 14px;
 
-#headerBC {
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    width: 100%;
-
-    padding: 15px 30px;
-
-    background-color: #2b3e50;
-
-    box-shadow: 0 2px 10px rgba(0,0,0,.15);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--gold);
 
 }
 
-#headerBC h1 {
+.hero h1 {
 
     margin: 0;
-    font-size: 1.7rem;
-    color: white;
+
+    color: #fff;
+
+    font-size: clamp(2.1rem, 5vw, 3.1rem);
+    font-weight: 600;
+    letter-spacing: -.01em;
+
+}
+
+.hero .subtitulo {
+
+    max-width: 560px;
+
+    margin: 16px 0 0;
+
+    color: rgba(242, 238, 225, .78);
+
+    font-size: 16px;
+    line-height: 1.7;
+
+}
+
+#botonesInicio {
+
+    margin-top: 30px;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
 
 }
 
 
-/*==========================================================
-=            TÍTULO PRINCIPAL (INDEX)
-==========================================================*/
-
+/* Título simple usado como respaldo si no hay .hero (compatibilidad) */
 body > h1 {
 
     width: 100%;
 
-    background: #2c3e50;
+    background: var(--pine);
 
     color: white;
 
@@ -79,26 +195,66 @@ body > h1 {
 
 
 /*==========================================================
+=            HEADER (SUBPÁGINAS)
+==========================================================*/
+
+#headerBC {
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+
+    width: 100%;
+
+    padding: 20px 34px;
+
+    background: linear-gradient(180deg, var(--pine) 0%, var(--pine-dark) 100%);
+
+    border-bottom: 3px solid var(--gold);
+
+    box-shadow: var(--shadow-md);
+
+}
+
+#headerBC h1 {
+
+    margin: 0;
+
+    font-size: clamp(1.35rem, 3vw, 1.9rem);
+    font-weight: 600;
+
+    color: white;
+
+}
+
+
+/*==========================================================
 =            BOTONES
 ==========================================================*/
 
 button {
 
-    background: #3498db;
+    font-family: var(--font-body);
 
-    color: white;
+    background: var(--pine);
 
-    border: none;
+    color: var(--paper);
 
-    padding: 15px 30px;
+    border: 1.5px solid var(--pine);
 
-    border-radius: 10px;
+    padding: 13px 28px;
 
-    font-size: 16px;
+    border-radius: var(--radius-sm);
+
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: .01em;
 
     cursor: pointer;
 
-    transition: .3s;
+    transition: background-color .2s, border-color .2s, color .2s, transform .15s;
 
     margin: 5px;
 
@@ -106,9 +262,35 @@ button {
 
 button:hover {
 
-    background: #21618c;
+    background: var(--pine-light);
+    border-color: var(--pine-light);
 
-    transform: scale(1.05);
+    transform: translateY(-1px);
+
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+
+/* Botones sobre fondo oscuro (hero / headerBC): estilo "placa" en hueco */
+
+.hero button,
+#headerBC button {
+
+    background: transparent;
+    color: var(--paper);
+    border: 1.5px solid var(--gold);
+
+}
+
+.hero button:hover,
+#headerBC button:hover {
+
+    background: var(--gold);
+    color: var(--pine-dark);
+    border-color: var(--gold);
 
 }
 
@@ -119,17 +301,9 @@ button:hover {
 
 #btnVolver {
 
-    padding: 10px 20px;
+    padding: 10px 22px;
 
-    border-radius: 8px;
-
-    font-size: 15px;
-
-}
-
-#btnVolver:hover {
-
-    background-color: #21618c;
+    font-size: 14px;
 
 }
 
@@ -142,23 +316,31 @@ input {
 
     width: 300px;
 
-    padding: 15px;
+    padding: 14px 16px;
 
-    font-size: 16px;
+    font-size: 15px;
+    font-family: var(--font-body);
+    color: var(--ink);
 
-    border-radius: 10px;
+    background: var(--card);
 
-    border: 2px solid #ccc;
+    border-radius: var(--radius-sm);
+
+    border: 1.5px solid var(--border);
 
     margin-right: 10px;
 
 }
 
+input::placeholder {
+    color: #A79E88;
+}
+
 input:focus {
 
     outline: none;
-
-    border-color: #3498db;
+    border-color: var(--gold-dark);
+    box-shadow: 0 0 0 3px rgba(176, 141, 87, .18);
 
 }
 
@@ -171,17 +353,18 @@ input:focus {
 
     margin-top: 40px;
 
-    background: white;
+    background: var(--card);
 
     width: 350px;
 
     min-height: 150px;
 
-    padding: 25px;
+    padding: 28px;
 
-    border-radius: 15px;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border);
 
-    box-shadow: 0px 5px 15px rgba(0,0,0,.15);
+    box-shadow: var(--shadow-md);
 
     text-align: center;
 
@@ -189,23 +372,50 @@ input:focus {
 
 #resultado img {
 
-    width: 150px;
+    display: block;
+    background: var(--paper-alt);
 
-    border-radius: 10px;
+    width: 150px;
+    height: 220px;
+    object-fit: cover;
+
+    margin: 0 auto;
+
+    border-radius: var(--radius-sm);
+
+    box-shadow: var(--shadow-sm);
 
 }
 
-#resultado h2 {
+#resultado h2, #resultado h3 {
 
-    color: #2c3e50;
+    color: var(--pine);
+    font-weight: 600;
 
 }
 
 #resultado p {
 
-    font-size: 17px;
+    font-size: 16px;
 
-    color: #555;
+    color: var(--ink-soft);
+
+}
+
+
+/*==========================================================
+=            ETIQUETAS "LABEL: VALOR" (RESULTADO / DETALLE)
+==========================================================*/
+
+#resultado p strong,
+#detalleLibro p strong {
+
+    font-family: var(--font-mono);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    color: var(--gold-dark);
 
 }
 
@@ -217,18 +427,18 @@ input:focus {
 #detalleLibro {
 
     width: 950px;
-
     max-width: 95%;
 
-    background: white;
+    background: var(--card);
 
     margin-top: 30px;
 
-    padding: 35px;
+    padding: 38px;
 
-    border-radius: 20px;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border);
 
-    box-shadow: 0 8px 20px rgba(0,0,0,.15);
+    box-shadow: var(--shadow-md);
 
 }
 
@@ -239,7 +449,7 @@ input:focus {
 
     display: flex;
 
-    gap: 40px;
+    gap: 42px;
 
     align-items: flex-start;
 
@@ -260,11 +470,18 @@ input:focus {
 
 #imgDetail img {
 
+    display: block;
+    background: var(--paper-alt);
+
     width: 240px;
+    height: 340px;
+    object-fit: cover;
 
-    border-radius: 12px;
+    border-radius: var(--radius-md);
 
-    box-shadow: 0 4px 12px rgba(0,0,0,.2);
+    box-shadow: var(--shadow-md);
+    border: 6px solid var(--card);
+    outline: 1px solid var(--border);
 
 }
 
@@ -281,7 +498,7 @@ input:focus {
 
     background: none;
 
-    color: #2c3e50;
+    color: var(--pine);
 
     padding: 0;
 
@@ -291,17 +508,18 @@ input:focus {
 
     text-align: left;
 
-    font-size: 34px;
+    font-size: clamp(1.7rem, 3vw, 2.2rem);
+    font-weight: 600;
 
 }
 
 #detalleLibro p {
 
-    font-size: 18px;
+    font-size: 16px;
 
-    color: #555;
+    color: var(--ink-soft);
 
-    line-height: 1.7;
+    line-height: 1.75;
 
     margin: 12px 0;
 
@@ -318,9 +536,10 @@ h2 {
 
     margin-bottom: 20px;
 
-    color: #2c3e50;
+    color: var(--pine);
 
-    font-size: 28px;
+    font-size: clamp(1.4rem, 3vw, 1.7rem);
+    font-weight: 600;
 
 }
 
@@ -346,15 +565,19 @@ h2 {
 
 .recomendacion {
 
+    position: relative;
+
     width: 180px;
 
-    background: white;
+    background: var(--card);
 
-    padding: 15px;
+    padding: 16px;
+    padding-top: 19px;
 
-    border-radius: 15px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border);
 
-    box-shadow: 0 4px 12px rgba(0,0,0,.15);
+    box-shadow: var(--shadow-sm);
 
     text-align: center;
 
@@ -362,17 +585,35 @@ h2 {
 
     transition: transform .25s, box-shadow .25s;
 
+    overflow: hidden;
+
+}
+
+.recomendacion::before {
+
+    content: "";
+
+    position: absolute;
+    top: 0; left: 0; right: 0;
+
+    height: 3px;
+
+    background: linear-gradient(90deg, var(--gold), var(--pine));
+
 }
 
 .recomendacion:hover {
 
-    transform: translateY(-8px);
+    transform: translateY(-6px);
 
-    box-shadow: 0 10px 25px rgba(0,0,0,.25);
+    box-shadow: var(--shadow-lg);
 
 }
 
 .recomendacion img {
+
+    display: block;
+    background: var(--paper-alt);
 
     width: 120px;
 
@@ -380,60 +621,83 @@ h2 {
 
     object-fit: cover;
 
-    border-radius: 8px;
+    border-radius: var(--radius-sm);
 
 }
 
 .recomendacion h3 {
 
-    color: #2c3e50;
+    color: var(--pine);
 
-    margin: 12px 0 8px;
+    margin: 12px 0 6px;
 
-    font-size: 18px;
+    font-size: 17px;
+    font-weight: 600;
 
 }
 
 .recomendacion p {
 
-    color: #666;
+    color: var(--ink-soft);
 
-    font-size: 15px;
+    font-size: 14px;
 
 }
 
 
 /*==========================================================
-=            ESTADOS (DISPONIBLE / PRESTADO)
+=            ESTADOS (SELLO "DISPONIBLE" / "PRESTADO")
+==========================================================
+Estilo de sello de tinta usado en las tarjetas físicas de
+biblioteca: contorno, mayúsculas espaciadas, ligera rotación.
 ==========================================================*/
 
 .estado {
 
     display: inline-block;
 
-    padding: 4px 12px;
+    padding: 3px 11px;
 
-    border-radius: 20px;
+    border-radius: 3px;
+    border: 1.5px solid currentColor;
 
-    font-size: 13px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
 
-    font-weight: bold;
+    background: transparent;
 
-    color: white;
+    transform: rotate(-3deg);
 
     margin-top: 8px;
 
 }
 
 .estado.disponible {
-
-    background: #2ecc71;
-
+    color: var(--sage-dark);
 }
 
 .estado.prestado {
+    color: var(--wine);
+}
 
-    background: #e74c3c;
+
+/*==========================================================
+=            NÚMERO DE CATÁLOGO (CÓDIGO DE LIBRO)
+==========================================================*/
+
+.codigo-libro {
+
+    display: inline-block;
+
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: .06em;
+    color: var(--ink-soft);
+
+    margin-bottom: 4px;
 
 }
 
@@ -445,10 +709,9 @@ h2 {
 #catalogoSection {
 
     width: 90%;
-
     max-width: 1100px;
 
-    margin-top: 10px;
+    margin-top: 6px;
 
     text-align: center;
 
@@ -462,9 +725,9 @@ h2 {
 
     justify-content: center;
 
-    gap: 15px;
+    gap: 18px;
 
-    margin-top: 20px;
+    margin-top: 24px;
 
 }
 
@@ -476,7 +739,7 @@ h2 {
 
     overflow: hidden;
 
-    padding: 10px 0;
+    padding: 12px 4px;
 
     flex: 1;
 
@@ -488,37 +751,60 @@ h2 {
 
     flex-shrink: 0;
 
-    width: 50px;
-
-    height: 50px;
+    width: 46px;
+    height: 46px;
 
     padding: 0;
 
     border-radius: 50%;
 
-    font-size: 26px;
+    background: var(--card);
+    color: var(--pine);
+    border: 1.5px solid var(--border);
+
+    font-size: 22px;
+    line-height: 1;
+    font-weight: 600;
 
     display: flex;
-
     align-items: center;
-
     justify-content: center;
+
+    box-shadow: var(--shadow-sm);
 
 }
 
+.btnCarrusel:hover {
+
+    background: var(--pine);
+    color: var(--paper);
+    border-color: var(--pine);
+
+    transform: translateY(-1px);
+
+}
+
+
+/*==========================================================
+=            TARJETA DE LIBRO (CATÁLOGO)
+==========================================================*/
+
 .tarjeta-libro {
 
-    width: 180px;
+    position: relative;
 
+    width: 180px;
     flex: 0 0 auto;
 
-    background: white;
+    background: var(--card);
 
-    padding: 15px;
+    padding: 16px;
+    padding-top: 19px;
 
-    border-radius: 15px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border);
 
-    box-shadow: 0 4px 12px rgba(0,0,0,.15);
+    box-shadow: var(--shadow-sm);
 
     text-align: center;
 
@@ -526,41 +812,59 @@ h2 {
 
     transition: transform .25s, box-shadow .25s;
 
+    overflow: hidden;
+
+}
+
+.tarjeta-libro::before {
+
+    content: "";
+
+    position: absolute;
+    top: 0; left: 0; right: 0;
+
+    height: 3px;
+
+    background: linear-gradient(90deg, var(--gold), var(--pine));
+
 }
 
 .tarjeta-libro:hover {
 
     transform: translateY(-8px);
 
-    box-shadow: 0 10px 25px rgba(0,0,0,.25);
+    box-shadow: var(--shadow-lg);
 
 }
 
 .tarjeta-libro img {
 
-    width: 120px;
+    display: block;
+    background: var(--paper-alt);
 
+    width: 120px;
     height: 180px;
 
     object-fit: cover;
 
-    border-radius: 8px;
+    border-radius: var(--radius-sm);
 
 }
 
 .tarjeta-libro h3 {
 
-    color: #2c3e50;
+    color: var(--pine);
 
-    margin: 12px 0 4px;
+    margin: 12px 0 3px;
 
     font-size: 16px;
+    font-weight: 600;
 
 }
 
 .tarjeta-libro p {
 
-    color: #666;
+    color: var(--ink-soft);
 
     font-size: 14px;
 
@@ -575,13 +879,30 @@ h2 {
 
 #usuarioSection {
 
-    margin-top: 30px;
+    width: 90%;
+    max-width: 900px;
+
+    margin-top: 34px;
+
+    padding: 18px 22px;
+
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+
+    box-shadow: var(--shadow-sm);
 
     display: flex;
-
     align-items: center;
-
+    flex-wrap: wrap;
     gap: 10px;
+
+}
+
+#usuarioSection label {
+
+    font-weight: 600;
+    color: var(--pine);
 
 }
 
@@ -590,66 +911,80 @@ h2 {
 #historialSection {
 
     width: 90%;
-
     max-width: 900px;
 
-    margin-top: 20px;
+    margin-top: 26px;
 
 }
 
 #listaLibrosPrestamo {
 
     display: flex;
-
     flex-direction: column;
 
-    gap: 15px;
+    gap: 14px;
 
 }
 
 .tarjetaPrestamo {
 
-    display: flex;
+    position: relative;
 
+    display: flex;
     align-items: center;
+    flex-wrap: wrap;
 
     gap: 20px;
 
-    background: white;
+    background: var(--card);
 
-    padding: 15px 20px;
+    padding: 16px 22px;
 
-    border-radius: 15px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--pine);
 
-    box-shadow: 0 4px 12px rgba(0,0,0,.12);
+    box-shadow: var(--shadow-sm);
+
+    transition: box-shadow .2s, transform .2s;
+
+}
+
+.tarjetaPrestamo:hover {
+
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
 
 }
 
 .tarjetaPrestamo img {
 
-    width: 60px;
+    display: block;
+    background: var(--paper-alt);
 
-    height: 90px;
+    width: 58px;
+    height: 88px;
 
     object-fit: cover;
 
-    border-radius: 8px;
+    border-radius: var(--radius-sm);
 
     flex-shrink: 0;
 
 }
 
 .infoPrestamo {
-
     flex: 1;
-
+    min-width: 180px;
 }
 
 .infoPrestamo h3 {
 
-    margin: 0 0 4px;
+    margin: 0 0 3px;
 
-    color: #2c3e50;
+    color: var(--pine);
+    font-size: 17px;
+    font-weight: 600;
 
 }
 
@@ -657,8 +992,7 @@ h2 {
 
     margin: 0;
 
-    color: #666;
-
+    color: var(--ink-soft);
     font-size: 14px;
 
 }
@@ -666,7 +1000,6 @@ h2 {
 .accionesPrestamo {
 
     display: flex;
-
     flex-wrap: wrap;
 
     gap: 8px;
@@ -677,71 +1010,131 @@ h2 {
 
 .accionesPrestamo button {
 
-    padding: 8px 14px;
+    padding: 9px 16px;
 
-    font-size: 14px;
+    font-size: 13.5px;
 
     margin: 0;
 
 }
 
+.btnPrestar {
+    background: var(--pine);
+    border-color: var(--pine);
+}
+
+.btnPrestar:hover {
+    background: var(--pine-light);
+    border-color: var(--pine-light);
+}
+
+.btnDevolver {
+    background: var(--sage);
+    border-color: var(--sage);
+}
+
+.btnDevolver:hover {
+    background: var(--sage-dark);
+    border-color: var(--sage-dark);
+}
+
+.btnVerCola {
+    background: transparent;
+    color: var(--pine);
+    border-color: var(--border);
+}
+
+.btnVerCola:hover {
+    background: var(--paper-alt);
+    color: var(--pine);
+    border-color: var(--gold);
+}
+
+
+/*==========================================================
+=            FILA DE ESPERA (COLA) / HISTORIAL (PILA)
+==========================================================*/
+
 #colaSection,
 #historialSection {
 
-    background: white;
+    background: var(--card);
 
-    padding: 20px 25px;
+    padding: 22px 26px;
 
-    border-radius: 15px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border);
 
-    box-shadow: 0 4px 12px rgba(0,0,0,.12);
+    box-shadow: var(--shadow-sm);
+
+    margin-bottom: 26px;
+
+}
+
+#colaSection h2,
+#historialSection h2 {
+    margin-top: 0;
+}
+
+#colaTitulo {
+
+    color: var(--ink-soft);
+    font-size: 15px;
 
 }
 
 #colaEspera,
 #historialLista {
 
-    padding-left: 20px;
+    padding-left: 22px;
 
-    color: #555;
+    color: var(--ink);
 
 }
 
 #colaEspera li,
 #historialLista li {
 
-    margin: 6px 0;
+    margin: 7px 0;
 
+    line-height: 1.5;
+
+}
+
+#historialLista {
+    font-family: var(--font-mono);
+    font-size: 13.5px;
+    color: var(--ink-soft);
 }
 
 #historialHeader {
 
     display: flex;
-
     align-items: center;
-
     justify-content: space-between;
-
     flex-wrap: wrap;
 
-    gap: 10px;
+    gap: 12px;
 
 }
 
 #historialHeader h2 {
-
     margin: 0;
-
 }
 
 #btnDeshacer {
 
-    background: #e67e22;
+    background: var(--wine);
+    border-color: var(--wine);
+
+    font-size: 14px;
+    padding: 10px 20px;
 
 }
 
 #btnDeshacer:hover {
 
-    background: #ca6510;
+    background: var(--wine-dark);
+    border-color: var(--wine-dark);
 
 }

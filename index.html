@@ -5,26 +5,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Biblioteca</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/styles.css">
 </head>
 
 <body>
 
-    <h1>
-        Sistema de Biblioteca
-    </h1>
+    <header class="hero">
 
-    <div id="botonesInicio">
+        <p class="eyebrow">Estructuras de datos aplicadas</p>
 
-        <button onclick="window.location.href='ventanas/buscar-arbol.html'">
-            Buscar libros por medio de código
-        </button>
+        <h1>Sistema de Biblioteca</h1>
 
-        <button onclick="window.location.href='ventanas/prestamos.html'">
-            Sistema de Préstamos
-        </button>
+        <p class="subtitulo">
+            Catálogo, búsqueda y préstamos construidos con listas enlazadas,
+            árboles binarios, grafos, pilas y colas.
+        </p>
 
-    </div>
+        <div id="botonesInicio">
+
+            <button onclick="window.location.href='ventanas/buscar-arbol.html'">
+                Buscar libros por medio de código
+            </button>
+
+            <button onclick="window.location.href='ventanas/prestamos.html'">
+                Sistema de Préstamos
+            </button>
+
+        </div>
+
+    </header>
 
     <section id="catalogoSection">
 
