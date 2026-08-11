@@ -1,56 +1,49 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>
-        Sistema de Préstamos
-    </title>
+    <title>Sistema de Préstamos</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/styles.css">
 </head>
-
 <body>
-
     <header id="headerBC">
         <h1>Sistema de Préstamos</h1>
         <button id="btnVolver">Volver al inicio</button>
     </header>
-
-    <section id="usuarioSection">
-        <label for="nombreUsuario">Tu nombre:</label>
-        <input type="text" id="nombreUsuario" placeholder="Ej: Ana Torres">
-    </section>
-
-    <section id="prestamosSection">
-        <h2>Libros</h2>
-        <div id="listaLibrosPrestamo"></div>
-    </section>
-
-    <section id="colaSection">
-        <h2>Fila de espera</h2>
-        <p id="colaTitulo">Selecciona "Ver fila" en un libro para ver quién espera por él.</p>
-        <ul id="colaEspera"></ul>
-    </section>
-
-    <section id="historialSection">
-
-        <div id="historialHeader">
-            <h2>Historial de movimientos</h2>
-            <button id="btnDeshacer">Deshacer última acción</button>
-        </div>
-
-        <ul id="historialLista"></ul>
-
-    </section>
-
+    <main class="page-shell loans-page">
+        <section class="loans-intro">
+            <p class="eyebrow">Gestión de circulación</p>
+            <h2>Préstamos y reservas</h2>
+            <p>Identifica al lector antes de prestar un libro o incorporarlo a su fila de espera.</p>
+        </section>
+        <section id="usuarioSection">
+            <label for="nombreUsuario">Nombre del lector</label>
+            <input type="text" id="nombreUsuario" placeholder="Ejemplo: Ana Torres">
+        </section>
+        <section id="prestamosSection">
+            <div class="section-heading compact-heading">
+                <h2>Libros disponibles para gestionar</h2>
+                <p>Consulta su estado y realiza un préstamo, devolución o reserva.</p>
+            </div>
+            <div id="listaLibrosPrestamo"></div>
+        </section>
+        <section id="colaSection">
+            <h2>Fila de espera</h2>
+            <p id="colaTitulo">Selecciona “Ver fila” en un libro para ver quién espera por él.</p>
+            <ul id="colaEspera"></ul>
+        </section>
+        <section id="historialSection">
+            <div id="historialHeader">
+                <h2>Historial de movimientos</h2>
+                <button id="btnDeshacer">Deshacer última acción</button>
+            </div>
+            <ul id="historialLista"></ul>
+        </section>
+    </main>
     <script type="module" src="../scripts/prestamos.js"></script>
-
 </body>
-
 </html>

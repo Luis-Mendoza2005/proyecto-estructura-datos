@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detalle del Libro</title>
+    <title>Detalle del libro</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -11,20 +11,19 @@
 </head>
 <body>
     <header id="headerBC">
-        <h1>Detalle de Libro</h1>
-        <button id="btnVolver">Volver al Inicio</button>
+        <h1>Detalle del libro</h1>
+        <button id="btnVolver">Volver al inicio</button>
     </header>
-    
-
-    <section id="detalleLibro">
-
-    </section>
-
-    <h2>Libros Recomendados</h2>
-
-    <section id="recomendados">
-
-    </section>
+    <main class="page-shell detail-page">
+        <section id="detalleLibro" aria-live="polite"></section>
+        <section class="recommendations-section" aria-labelledby="tituloRecomendados">
+            <div class="section-heading">
+                <p class="eyebrow">Conexiones del catálogo</p>
+                <h2 id="tituloRecomendados">También te podría interesar</h2>
+            </div>
+            <section id="recomendados"></section>
+        </section>
+    </main>
     <script type="module" src="../scripts/scripts.js"></script>
 </body>
 </html>
