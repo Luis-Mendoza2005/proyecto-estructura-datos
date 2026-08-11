@@ -64,6 +64,7 @@ function crearTarjetaLibro(libro){
     const claseEstado = libro.estado === "Disponible" ? "disponible" : "prestado";
 
     tarjeta.innerHTML = `
+        <span class="codigo-libro">N.º ${libro.codigo}</span>
         <img src="${libro.imagen}" alt="${libro.titulo}">
         <h3>${libro.titulo}</h3>
         <p>${libro.autor}</p>

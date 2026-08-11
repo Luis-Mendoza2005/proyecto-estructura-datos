@@ -50,6 +50,7 @@ function renderLibros(){
             <img src="${libro.imagen}" alt="${libro.titulo}">
 
             <div class="infoPrestamo">
+                <span class="codigo-libro">N.º ${libro.codigo}</span>
                 <h3>${libro.titulo}</h3>
                 <p>${libro.autor}</p>
                 <span class="estado ${claseEstado}">${libro.estado}</span>
@@ -110,9 +111,9 @@ function renderCola(){
         return;
     }
 
-    items.forEach(nombre => {
+    items.forEach((nombre, indice) => {
         const li = document.createElement("li");
-        li.textContent = nombre;
+        li.textContent = `${indice + 1}. ${nombre}`;
         colaEspera.appendChild(li);
     });
 }
