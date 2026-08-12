@@ -1,8 +1,7 @@
 import arbol from "./arbol.js";
 import grafo from "./grafo.js";
 
-//Inicio de seccin del arbol binario
-//===========================================================
+
 const botonBuscar = document.getElementById("btnBuscar");
 
 if (botonBuscar){
@@ -76,10 +75,8 @@ function mostrarResultado(libro){
 }
 
 
-//Apartado para el boton de volver en la sección del árbol
 const btnVolver = document.getElementById("btnVolver");
-/*Se ubica un if porque hay páginas las cuales no utilizan el
-boton de volver, como es la propia de inicio que index html */
+
 if(btnVolver){
     btnVolver.addEventListener("click", ()=>{
         window.location.href="../index.html";
@@ -87,7 +84,6 @@ if(btnVolver){
 }
 
 
-//Apartado para buscar el libro por medio de enter
 const inputCodigo = document.getElementById("codigoLibro");
 if(inputCodigo){
     inputCodigo.addEventListener("keydown", (event)=>{
@@ -97,11 +93,7 @@ if(inputCodigo){
     })
 }
 
-//==========================================================
-//Fin de sección de árbol binario
 
-//Inicio de Grafo
-//==========================================================
 
 function obtenerCodigoURL(){
     const parametros = new URLSearchParams(window.location.search);

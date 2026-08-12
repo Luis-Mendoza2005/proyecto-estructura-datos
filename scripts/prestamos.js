@@ -11,7 +11,6 @@ const historialLista = document.getElementById("historialLista");
 const btnDeshacer = document.getElementById("btnDeshacer");
 const btnVolver = document.getElementById("btnVolver");
 
-//Código del libro cuya fila de espera se está mostrando.
 let codigoSeleccionado = null;
 
 const ETIQUETAS_ACCION = {

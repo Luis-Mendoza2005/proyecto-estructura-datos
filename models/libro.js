@@ -1,5 +1,4 @@
-//Luis si lees esto voy a poner comentarios en las partes que no se que
-//final del proyecto lo eliminamos.
+
 class Libro {
 
     constructor(codigo, titulo, autor, categoria, estado, descripcion, imagen) {
