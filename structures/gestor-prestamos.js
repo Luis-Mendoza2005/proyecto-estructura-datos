@@ -6,14 +6,13 @@ class GestorPrestamos {
 
     constructor(){
         this.historial = new Pila();
-<<<<<<< HEAD
-=======
+
         //Guarda quién tiene actualmente cada libro prestado. La clave
         //es el código del libro y el valor es el nombre del lector.
         this.prestatarios = new Map();
         //Un libro puede tener su propia fila de espera, por eso se
         //guarda una Cola distinta para cada código de libro.
->>>>>>> df0af7f (Correcion de errores)
+      
         this.colasEspera = new Map();
     }
 
