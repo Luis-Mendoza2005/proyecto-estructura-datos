@@ -6,6 +6,14 @@ class GestorPrestamos {
 
     constructor(){
         this.historial = new Pila();
+<<<<<<< HEAD
+=======
+        //Guarda quién tiene actualmente cada libro prestado. La clave
+        //es el código del libro y el valor es el nombre del lector.
+        this.prestatarios = new Map();
+        //Un libro puede tener su propia fila de espera, por eso se
+        //guarda una Cola distinta para cada código de libro.
+>>>>>>> df0af7f (Correcion de errores)
         this.colasEspera = new Map();
     }
 
@@ -20,6 +28,7 @@ class GestorPrestamos {
 
         if (libro.estado === "Disponible"){
             libro.estado = "Prestado";
+            this.prestatarios.set(libro.codigo, nombreUsuario);
 
             this.historial.agregar({
                 tipo: "prestamo",
@@ -50,18 +59,30 @@ class GestorPrestamos {
         };
     }
 
-    devolver(libro){
+    devolver(libro, nombreUsuario){
+
+        const prestatario = this.prestatarios.get(libro.codigo);
+
+        //Solo quien recibió el préstamo puede registrar la devolución.
+        if (prestatario !== nombreUsuario){
+            return {
+                ok: false,
+                mensaje: `No puedes devolver "${libro.titulo}" porque está prestado a ${prestatario}.`
+            };
+        }
 
         const cola = this.obtenerCola(libro.codigo);
 
         if (!cola.isEmpty()){
             const siguienteUsuario = cola.dequeue();
             libro.estado = "Prestado";
+            this.prestatarios.set(libro.codigo, siguienteUsuario);
 
             this.historial.agregar({
                 tipo: "entrega-reserva",
                 libro,
                 usuario: siguienteUsuario,
+                usuarioAnterior: nombreUsuario,
                 fecha: new Date()
             });
 
@@ -71,11 +92,12 @@ class GestorPrestamos {
         }
 
         libro.estado = "Disponible";
+        this.prestatarios.delete(libro.codigo);
 
         this.historial.agregar({
             tipo: "devolucion",
             libro,
-            usuario: null,
+            usuario: nombreUsuario,
             fecha: new Date()
         });
 
@@ -98,6 +120,7 @@ class GestorPrestamos {
 
             case "prestamo":
                 libro.estado = "Disponible";
+                this.prestatarios.delete(libro.codigo);
                 break;
 
             case "reserva":
@@ -106,11 +129,13 @@ class GestorPrestamos {
 
             case "devolucion":
                 libro.estado = "Prestado";
+                this.prestatarios.set(libro.codigo, accion.usuario);
                 break;
 
             case "entrega-reserva":
                 libro.estado = "Prestado";
                 cola.devolverAlFrente(accion.usuario);
+                this.prestatarios.set(libro.codigo, accion.usuarioAnterior);
                 break;
         }
 
@@ -123,6 +148,10 @@ class GestorPrestamos {
 
     obtenerColaComoArray(codigo){
         return this.obtenerCola(codigo).getItems();
+    }
+
+    obtenerPrestatario(codigo){
+        return this.prestatarios.get(codigo) ?? null;
     }
 }
 

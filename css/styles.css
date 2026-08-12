@@ -1,14 +1,8 @@
-/*==========================================================
-=            TOKENS DE DISEÑO
-==========================================================
-Paleta inspirada en una sala de lectura de biblioteca:
-verde pino (estanterías, lámparas), latón envejecido
-(herrajes, sellos) y papel/pergamino de fondo.
-==========================================================*/
+
 
 :root {
 
-    /* Color */
+    
     --pine: #1F3A34;
     --pine-dark: #142720;
     --pine-light: #2E5147;
@@ -31,26 +25,21 @@ verde pino (estanterías, lámparas), latón envejecido
 
     --border: #DCD2B4;
 
-    /* Tipografía */
+    
     --font-display: "Fraunces", Georgia, "Times New Roman", serif;
     --font-body: "Work Sans", Arial, Helvetica, sans-serif;
     --font-mono: "IBM Plex Mono", "Courier New", monospace;
 
-    /* Geometría */
+    
     --radius-lg: 14px;
     --radius-md: 10px;
     --radius-sm: 7px;
 
-    /* Sombras (con tinte cálido en vez de negro puro) */
+    
     --shadow-sm: 0 2px 8px rgba(38, 36, 32, .09);
     --shadow-md: 0 10px 24px rgba(38, 36, 32, .12);
     --shadow-lg: 0 18px 40px rgba(20, 39, 32, .18);
 }
-
-
-/*==========================================================
-=            CONFIGURACIÓN GENERAL
-==========================================================*/
 
 * {
     box-sizing: border-box;
@@ -67,11 +56,6 @@ verde pino (estanterías, lámparas), latón envejecido
     outline-offset: 2px;
 }
 
-
-/*==========================================================
-=            BODY
-==========================================================*/
-
 body {
 
     margin: 0;
@@ -79,7 +63,7 @@ body {
 
     color: var(--ink);
     background-color: var(--paper);
-    /* Textura muy sutil de trama de papel/tela */
+    
     background-image:
         repeating-linear-gradient(135deg, rgba(31, 58, 52, .025) 0px, rgba(31, 58, 52, .025) 1px, transparent 1px, transparent 7px);
 
@@ -95,11 +79,6 @@ h1, h2, h3 {
     font-family: var(--font-display);
     color: var(--pine);
 }
-
-
-/*==========================================================
-=            HERO (PORTADA / INDEX)
-==========================================================*/
 
 .hero {
 
@@ -173,8 +152,6 @@ h1, h2, h3 {
 
 }
 
-
-/* Título simple usado como respaldo si no hay .hero (compatibilidad) */
 body > h1 {
 
     width: 100%;
@@ -192,11 +169,6 @@ body > h1 {
     font-size: 32px;
 
 }
-
-
-/*==========================================================
-=            HEADER (SUBPÁGINAS)
-==========================================================*/
 
 #headerBC {
 
@@ -228,11 +200,6 @@ body > h1 {
     color: white;
 
 }
-
-
-/*==========================================================
-=            BOTONES
-==========================================================*/
 
 button {
 
@@ -273,9 +240,6 @@ button:active {
     transform: translateY(0);
 }
 
-
-/* Botones sobre fondo oscuro (hero / headerBC): estilo "placa" en hueco */
-
 .hero button,
 #headerBC button {
 
@@ -294,11 +258,6 @@ button:active {
 
 }
 
-
-/*==========================================================
-=            BOTÓN VOLVER
-==========================================================*/
-
 #btnVolver {
 
     padding: 10px 22px;
@@ -306,11 +265,6 @@ button:active {
     font-size: 14px;
 
 }
-
-
-/*==========================================================
-=            INPUT
-==========================================================*/
 
 input {
 
@@ -343,11 +297,6 @@ input:focus {
     box-shadow: 0 0 0 3px rgba(176, 141, 87, .18);
 
 }
-
-
-/*==========================================================
-=            RESULTADO DEL ÁRBOL BINARIO
-==========================================================*/
 
 #resultado {
 
@@ -402,11 +351,6 @@ input:focus {
 
 }
 
-
-/*==========================================================
-=            ETIQUETAS "LABEL: VALOR" (RESULTADO / DETALLE)
-==========================================================*/
-
 #resultado p strong,
 #detalleLibro p strong {
 
@@ -418,11 +362,6 @@ input:focus {
     color: var(--gold-dark);
 
 }
-
-
-/*==========================================================
-=            DETALLE DEL LIBRO
-==========================================================*/
 
 #detalleLibro {
 
@@ -442,9 +381,6 @@ input:focus {
 
 }
 
-
-/* Contenedor principal */
-
 #contenidoDetalle {
 
     display: flex;
@@ -454,9 +390,6 @@ input:focus {
     align-items: flex-start;
 
 }
-
-
-/* Columna de la imagen */
 
 #imgDetail {
 
@@ -484,9 +417,6 @@ input:focus {
     outline: 1px solid var(--border);
 
 }
-
-
-/* Columna de la información */
 
 #infoDetalle {
 
@@ -525,11 +455,6 @@ input:focus {
 
 }
 
-
-/*==========================================================
-=            RECOMENDACIONES
-==========================================================*/
-
 h2 {
 
     margin-top: 40px;
@@ -542,7 +467,6 @@ h2 {
     font-weight: 600;
 
 }
-
 
 #recomendados {
 
@@ -559,9 +483,6 @@ h2 {
     margin-bottom: 40px;
 
 }
-
-
-/* Tarjeta */
 
 .recomendacion {
 
@@ -644,14 +565,6 @@ h2 {
 
 }
 
-
-/*==========================================================
-=            ESTADOS (SELLO "DISPONIBLE" / "PRESTADO")
-==========================================================
-Estilo de sello de tinta usado en las tarjetas físicas de
-biblioteca: contorno, mayúsculas espaciadas, ligera rotación.
-==========================================================*/
-
 .estado {
 
     display: inline-block;
@@ -683,11 +596,6 @@ biblioteca: contorno, mayúsculas espaciadas, ligera rotación.
     color: var(--wine);
 }
 
-
-/*==========================================================
-=            NÚMERO DE CATÁLOGO (CÓDIGO DE LIBRO)
-==========================================================*/
-
 .codigo-libro {
 
     display: inline-block;
@@ -701,11 +609,6 @@ biblioteca: contorno, mayúsculas espaciadas, ligera rotación.
 
 }
 
-
-/*==========================================================
-=            CATÁLOGO / CARRUSEL (LISTA ENLAZADA)
-==========================================================*/
-
 #catalogoSection {
 
     width: 90%;
@@ -717,7 +620,6 @@ biblioteca: contorno, mayúsculas espaciadas, ligera rotación.
 
 }
 
-/* Filtro de orden: evita el selector nativo y lo integra al lenguaje visual */
 .orden-catalogo {
     display: inline-flex;
     align-items: center;
@@ -838,11 +740,6 @@ biblioteca: contorno, mayúsculas espaciadas, ligera rotación.
 
 }
 
-
-/*==========================================================
-=            TARJETA DE LIBRO (CATÁLOGO)
-==========================================================*/
-
 .tarjeta-libro {
 
     position: relative;
@@ -925,11 +822,6 @@ biblioteca: contorno, mayúsculas espaciadas, ligera rotación.
     margin: 0;
 
 }
-
-
-/*==========================================================
-=            SISTEMA DE PRÉSTAMOS (COLA + PILA)
-==========================================================*/
 
 #usuarioSection {
 
@@ -1051,6 +943,16 @@ biblioteca: contorno, mayúsculas espaciadas, ligera rotación.
 
 }
 
+.infoPrestamo .lectorPrestamo {
+    margin-top: 7px;
+    color: var(--wine);
+    font-size: 13px;
+}
+
+.lectorPrestamo strong {
+    font-weight: 700;
+}
+
 .accionesPrestamo {
 
     display: flex;
@@ -1103,11 +1005,6 @@ biblioteca: contorno, mayúsculas espaciadas, ligera rotación.
     color: var(--pine);
     border-color: var(--gold);
 }
-
-
-/*==========================================================
-=            FILA DE ESPERA (COLA) / HISTORIAL (PILA)
-==========================================================*/
 
 #colaSection,
 #historialSection {
@@ -1192,11 +1089,6 @@ biblioteca: contorno, mayúsculas espaciadas, ligera rotación.
     border-color: var(--wine-dark);
 
 }
-
-
-/* =========================================================
-   MEJORAS DE EXPERIENCIA: PÁGINAS DE CONSULTA Y PRÉSTAMOS
-   ========================================================= */
 
 .page-shell {
     width: min(1100px, 92%);
@@ -1446,3 +1338,4 @@ biblioteca: contorno, mayúsculas espaciadas, ligera rotación.
         justify-content: space-between;
     }
 }
+

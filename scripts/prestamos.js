@@ -44,6 +44,8 @@ function renderLibros(){
 
         const claseEstado = libro.estado === "Disponible" ? "disponible" : "prestado";
         const enEspera = gestor.obtenerCola(libro.codigo).size();
+        const prestatario = gestor.obtenerPrestatario(libro.codigo);
+        const textoPrestatario = prestatario ? `<p class="lectorPrestamo">En préstamo: <strong>${prestatario}</strong></p>` : "";
 
         tarjeta.innerHTML = `
             <img src="${libro.imagen}" alt="${libro.titulo}">
@@ -53,6 +55,7 @@ function renderLibros(){
                 <h3>${libro.titulo}</h3>
                 <p>${libro.autor}</p>
                 <span class="estado ${claseEstado}">${libro.estado}</span>
+                ${textoPrestatario}
             </div>
 
             <div class="accionesPrestamo">
@@ -77,7 +80,10 @@ function renderLibros(){
                 return;
             }
 
-            const resultado = gestor.devolver(libro);
+            const nombre = obtenerNombre();
+            if (!nombre) return;
+
+            const resultado = gestor.devolver(libro, nombre);
             mostrarMensaje(resultado.mensaje);
             renderTodo();
         });
