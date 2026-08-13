@@ -1,29 +1,45 @@
 import Pila from "./pilas.js";
 import Queue from "./colas.js";
 
-
 class GestorPrestamos {
 
     constructor(){
         this.historial = new Pila();
-
-        //Guarda quién tiene actualmente cada libro prestado. La clave
-        //es el código del libro y el valor es el nombre del lector.
-        this.prestatarios = new Map();
-        //Un libro puede tener su propia fila de espera, por eso se
-        //guarda una Cola distinta para cada código de libro.
-      
         this.colasEspera = new Map();
+        this.prestatarios = new Map();
     }
 
     obtenerCola(codigo){
         if (!this.colasEspera.has(codigo)){
             this.colasEspera.set(codigo, new Queue());
         }
+
         return this.colasEspera.get(codigo);
     }
 
     prestar(libro, nombreUsuario){
+
+        const cola = this.obtenerCola(libro.codigo);
+        const prestatario = this.prestatarios.get(libro.codigo);
+
+        const mismoUsuario = (usuario) =>
+            usuario?.trim().toLowerCase() === nombreUsuario.trim().toLowerCase();
+
+        if (mismoUsuario(prestatario)){
+            return {
+                ok: false,
+                mensaje: `"${libro.titulo}" ya está prestado a tu nombre.`
+            };
+        }
+
+        const yaEstaEnEspera = cola.getItems().some(mismoUsuario);
+
+        if (yaEstaEnEspera){
+            return {
+                ok: false,
+                mensaje: `Ya estás registrado en la fila de espera de "${libro.titulo}".`
+            };
+        }
 
         if (libro.estado === "Disponible"){
             libro.estado = "Prestado";
@@ -42,7 +58,6 @@ class GestorPrestamos {
             };
         }
 
-        const cola = this.obtenerCola(libro.codigo);
         cola.enqueue(nombreUsuario);
 
         this.historial.agregar({
@@ -62,7 +77,6 @@ class GestorPrestamos {
 
         const prestatario = this.prestatarios.get(libro.codigo);
 
-        //Solo quien recibió el préstamo puede registrar la devolución.
         if (prestatario !== nombreUsuario){
             return {
                 ok: false,
@@ -74,6 +88,7 @@ class GestorPrestamos {
 
         if (!cola.isEmpty()){
             const siguienteUsuario = cola.dequeue();
+
             libro.estado = "Prestado";
             this.prestatarios.set(libro.codigo, siguienteUsuario);
 
@@ -86,7 +101,8 @@ class GestorPrestamos {
             });
 
             return {
-                mensaje: `"${libro.titulo}" fue devuelto y entregado automáticamente a ${siguienteUsuario} (primero en la fila).`
+                ok: true,
+                mensaje: `"${libro.titulo}" fue devuelto y entregado automáticamente a ${siguienteUsuario}.`
             };
         }
 
@@ -101,6 +117,7 @@ class GestorPrestamos {
         });
 
         return {
+            ok: true,
             mensaje: `"${libro.titulo}" fue devuelto y ahora está disponible.`
         };
     }
